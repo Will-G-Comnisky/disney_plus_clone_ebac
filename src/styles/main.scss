@@ -2,6 +2,10 @@
 @use 'hero';
 @use 'shows';
 @use 'signatures';
+@use 'available-devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 
 @font-face {
     font-family: Avenir;
@@ -20,6 +24,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir,sans-serif;
+    list-style: none;
 }
 
 body {
@@ -68,14 +73,79 @@ body {
 }
 
 .button {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
         height: 60px;
         font-size: 18px;
         color: variables.$sideTextColor;
-        background-color: #6421ff;
+        background-color: variables.$primaryButtonBackgroundColor;
         text-transform: uppercase;
         border-radius: 4px;
-        margin-top: 2vw;
-        margin-bottom: 8px;
+        text-decoration: none;
+        padding: 8px 14px;
+        letter-spacing: 1px;
+        border: 1px solid variables.$primaryButtonBackgroundColor;
+        
+        &:hover {
+            background-color: lighten(variables.$primaryButtonBackgroundColor, 3%);
+        }
+
+        &--secondary {
+            background-color: variables.$secondaryButtonBackgroundColor;
+            border-color: variables.$secondaryButtonBackgroundColor;
+
+            &:hover {
+                background-color: lighten(variables.$secondaryButtonBackgroundColor, 3%);
+            }
+        }
+
+        &--dark {
+            background-color: rgba(variables.$darkButtonBackgroundColor, 0.8);
+            border-color: variables.$sideTextColor;
+
+            &:hover {
+                background-color: variables.$sideTextColor;
+                color: variables.$backgroundColor;
+            }
+        }
 }
+
+.image-text-section {
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  
+    img {
+      max-width: 100%;
+    }
+  
+    &__text_container {
+      padding: 0 2vw;
+  
+      h2 {
+        margin-bottom: 24px;
+      }
+    }
+
+    &--image-full-width {
+        display: block;
+        position: relative;
+        img {
+            width: 100%;
+        }
+
+        &__text_container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: calc(50% - 5.6vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+  }
